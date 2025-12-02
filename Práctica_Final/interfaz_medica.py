@@ -60,7 +60,7 @@ class SistemaExpertoGUI:
         header_frame = ttk.Frame(self.root, padding="20 20 20 10")
         header_frame.pack(fill=tk.X)
         
-        lbl_titulo = ttk.Label(header_frame, text="Encuesta de Diagnóstico para Sarampión\no posibles enfermedades Exantemáticas", style="Title.TLabel")
+        lbl_titulo = ttk.Label(header_frame, text="Encuesta de Diagnóstico para Sarampión\no posibles enfermedades Exantemáticas\npara pacientes de Pediatría", style="Title.TLabel")
         lbl_titulo.pack(anchor=tk.W)
         
         lbl_instrucciones = ttk.Label(header_frame, text="Seleccione los síntomas presentes en el paciente:", foreground="gray")
