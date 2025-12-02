@@ -1,0 +1,125 @@
+{
+  "disease": {
+    "name": "Sarampión",
+    "criteria": {
+      "obligatory": [
+        "Fiebre alta (>=38.5°C)",
+        "Exantema maculopapular",
+        "Tos o coriza o conjuntivitis"
+      ],
+      "key_signs": [
+        "Manchas de Koplik",
+        "Inicio del exantema en cara y cuello con expansión hacia abajo",
+        "Historia de no vacunación"
+      ]
+    },
+    "symptoms": {
+      "prodromal": [
+        "Fiebre alta",
+        "Tos seca",
+        "Coriza (moqueo nasal)",
+        "Conjuntivitis",
+        "Fotofobia",
+        "Malestar general"
+      ],
+      "exanthematic_phase": [
+        "Exantema maculopapular",
+        "Inicio en cara",
+        "Diseminación cefalocaudal",
+        "Duración del exantema 4–7 días"
+      ],
+      "pathognomonic": [
+        "Manchas de Koplik (puntos blancos en mucosa oral)"
+      ]
+    }
+  },
+
+  "differential_diagnosis": [
+    {
+      "name": "Rubéola",
+      "key_features": [
+        "Fiebre baja",
+        "Exantema rosado leve",
+        "Adenopatía retroauricular",
+        "No hay Koplik"
+      ]
+    },
+    {
+      "name": "Exantema súbito (roseola)",
+      "key_features": [
+        "Fiebre muy alta 3 días que desaparece",
+        "Aparece exantema después de que baja la fiebre"
+      ]
+    },
+    {
+      "name": "Escarlatina",
+      "key_features": [
+        "Faringitis",
+        "Exantema tipo lija",
+        "Lengua aframbuesada"
+      ]
+    },
+    {
+      "name": "Dengue",
+      "key_features": [
+        "Dolor retroocular intenso",
+        "Mialgias fuertes",
+        "Exantema con patrón parcheado",
+        "Antecedente de mosquitos"
+      ]
+    },
+    {
+      "name": "Reacción medicamentosa",
+      "key_features": [
+        "Historia de medicamento reciente",
+        "Exantema variable",
+        "Ausencia de síntomas respiratorios"
+      ]
+    }
+  ],
+
+  "questions": [
+    { "id": 1, "text": "¿Presenta fiebre mayor a 38.5°C?", "type": "yesno" },
+    { "id": 2, "text": "¿Presenta tos?", "type": "yesno" },
+    { "id": 3, "text": "¿Presenta coriza (escurrimiento nasal)?", "type": "yesno" },
+    { "id": 4, "text": "¿Presenta conjuntivitis?", "type": "yesno" },
+    { "id": 5, "text": "¿Ha observado manchas blancas dentro de la boca (Koplik)?", "type": "yesno" },
+    { "id": 6, "text": "¿Tiene un exantema que comenzó en la cara y se extendió hacia abajo del cuerpo?", "type": "yesno" },
+    { "id": 7, "text": "¿Ha tenido contacto reciente con un caso sospechoso de sarampión?", "type": "yesno" },
+    { "id": 8, "text": "¿Está vacunado contra sarampión (SRP o SR)?", "type": "yesno" },
+    { "id": 9, "text": "¿La fiebre es leve o moderada (menor a 38.5°C)?", "type": "yesno" },
+    { "id": 10, "text": "¿Tiene ganglios inflamados detrás de las orejas (adenopatía retroauricular)?", "type": "yesno" },
+    { "id": 11, "text": "¿La fiebre fue alta por unos días y desapareció súbitamente antes del brote?", "type": "yesno" },
+    { "id": 12, "text": "¿El exantema apareció justo después de que la fiebre desapareció?", "type": "yesno" },
+    { "id": 13, "text": "¿Tiene dolor de garganta fuerte (faringitis)?", "type": "yesno" },
+    { "id": 14, "text": "¿La piel se siente áspera al tacto, como papel de lija?", "type": "yesno" }
+  ],
+
+  "rules": [
+    {
+      "id": "R1",
+      "if": ["fiebre_alta", "exantema", "tos_o_coriza_o_conjuntivitis"],
+      "then": "Caso compatible con sarampión"
+    },
+    {
+      "id": "R2",
+      "if": ["koplik", "exantema"],
+      "then": "Alta probabilidad de sarampión"
+    },
+    {
+      "id": "R3",
+      "if": ["exantema", "fiebre_baja", "adenopatia_retroauricular"],
+      "then": "Probable rubéola"
+    },
+    {
+      "id": "R4",
+      "if": ["fiebre_alta_desaparece", "exantema_posterior"],
+      "then": "Probable roseola (exantema súbito)"
+    },
+    {
+      "id": "R5",
+      "if": ["faringitis", "exantema_tipo_lija"],
+      "then": "Probable escarlatina"
+    }
+  ]
+}
